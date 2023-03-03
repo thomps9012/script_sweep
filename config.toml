@@ -1,9 +1,0 @@
-languageCode = "en-us"
-title = "script_sweep"
-baseURL = "https://thomps9012.github.io/script_sweep/"
-canonifyURLs = true
-theme = "cupper"
-publishDir = "docs"
-
-[params]
-  description = "Documentation for the **script_sweep** Application Program Interface (API) endpoint."
