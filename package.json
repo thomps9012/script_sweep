@@ -1,31 +1,43 @@
 {
-  "name": "cupper",
-  "version": "0.1.0",
-  "description": "A documentation builder for inclusive designers",
-  "main": "index.js",
+  "name": "script-sweep-docs",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "hugo server --baseURL http://localhost:1313",
-    "clean": "node lib/clean.js",
-    "build": "node lib/build.js",
-    "update": "node lib/update.js",
-    "a11y": "(npm list pa11y-ci || npm install -g pa11y-ci) && pa11y-ci --sitemap http://localhost:1313/sitemap.xml --config lib/.pa11yci"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
-  "pre-commit": [
-    "build"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ThePacielloGroup/cupper.git"
+  "dependencies": {
+    "@docusaurus/core": "2.3.1",
+    "@docusaurus/preset-classic": "2.3.1",
+    "@mdx-js/react": "^1.6.22",
+    "clsx": "^1.2.1",
+    "prism-react-renderer": "^1.3.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
-  "author": "Heydon Pickering <heydon@heydonworks.com> (http://www.heydonworks.com)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ThePacielloGroup/cupper/issues"
-  },
-  "homepage": "https://github.com/ThePacielloGroup/cupper#readme",
   "devDependencies": {
-    "pre-commit": "^1.2.2",
-    "sw-precache": "^5.2.0"
+    "@docusaurus/module-type-aliases": "2.3.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=16.14"
   }
 }

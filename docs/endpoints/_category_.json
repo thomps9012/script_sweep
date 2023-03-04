@@ -1,0 +1,8 @@
+{
+    "label": "Endpoints",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "description": "All available API Endpoints for the script_sweep API"
+    }
+}

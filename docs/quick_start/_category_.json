@@ -1,0 +1,8 @@
+{
+    "label": "Quick Start",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "description": "5 minutes to begin making API calls"
+    }
+}
