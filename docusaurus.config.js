@@ -11,7 +11,7 @@ const config = {
   favicon: "img/logo.png",
 
   url: "https://thomps9012.github.io",
-  baseUrl: "/",
+  baseUrl: "/script_sweep/",
 
   organizationName: "thomps9012",
   projectName: "script_sweep",
@@ -62,6 +62,11 @@ const config = {
           {
             label: "Endpoints and Methods",
             to: "/docs/endpoints",
+            position: "left",
+          },
+          {
+            label: "Request Headers",
+            to: "/docs/headers",
             position: "left",
           },
           {
