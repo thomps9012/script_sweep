@@ -47,14 +47,20 @@ const testCases = [
       code: 400,
       message:
         "We couldn't find a 'text' key in your request body. Ensure your request matches the classification and organization models.",
-      documentation_link: "",
+      documentation_link:
+        "https://thomps9012.github.io/script_sweep/docs/endpoints/classify",
+      second_documentation_link:
+        "https://thomps9012.github.io/script_sweep/docs/endpoints/organize",
     },
     char_expected: {
       status: "BAD REQUEST",
       code: 400,
       message:
         "We couldn't find a 'text' key in your request body. Ensure your request matches the classification and organization models.",
-      documentation_link: "",
+      documentation_link:
+        "https://thomps9012.github.io/script_sweep/docs/endpoints/classify",
+      second_documentation_link:
+        "https://thomps9012.github.io/script_sweep/docs/endpoints/organize",
     },
   },
   {

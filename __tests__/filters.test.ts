@@ -371,7 +371,7 @@ describe("Multiple filters and headers", () => {
           status: "NOT FOUND",
           code: 404,
           documentation_link:
-            "https://thomps9012.github.io/script_sweep/endpoints/scripts",
+            "https://thomps9012.github.io/script_sweep/docs/endpoints/scripts",
           message:
             "We couldn't find any scripts that matched the parameters and filters that you've set. Please broaden your search headers to view results.",
         });
