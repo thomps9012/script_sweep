@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkscript_sweep_docs=self.webpackChunkscript_sweep_docs||[]).push([[7602],{3272:s=>{s.exports=JSON.parse('{"label":"hola","permalink":"/script_sweep/blog/tags/hola","allTagsPath":"/script_sweep/blog/tags","count":1}')}}]);

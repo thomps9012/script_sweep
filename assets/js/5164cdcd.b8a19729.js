@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkscript_sweep_docs=self.webpackChunkscript_sweep_docs||[]).push([[7344],{7664:e=>{e.exports=JSON.parse('{"permalink":"/script_sweep/blog/tags/facebook","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
