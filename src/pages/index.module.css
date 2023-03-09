@@ -21,3 +21,27 @@
   align-items: center;
   justify-content: center;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: xx-large;
+  margin: 20px;
+  padding: 10px;
+}
+
+.form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form input {
+  font-size: x-large;
+  padding: 5px;
+}
+
+.form button {
+  font-size: x-large;
+  margin-top: 40px;
+}

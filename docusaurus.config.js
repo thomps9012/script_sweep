@@ -80,6 +80,11 @@ const config = {
             position: "left",
           },
           {
+            label: "Playground",
+            to: "/playground",
+            position: "left",
+          },
+          {
             href: "https://github.com/thomps9012/script_sweep",
             label: "GitHub",
             position: "right",
@@ -118,10 +123,17 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Full URL",
+                label: "Playground",
+                to: "/playground",
+              },
+              {
+                label: "Full Endpoint URL",
                 href: "https://script-sweep-loele2hdfa-uc.a.run.app",
               },
-              { label: "Shortened URL", href: "https://tinyurl.com/4zh9cjzb" },
+              {
+                label: "Shortened Endpoint URL",
+                href: "https://tinyurl.com/4zh9cjzb",
+              },
               {
                 label: "Personal Site",
                 href: "https://thomps9012-io.vercel.app",
@@ -133,7 +145,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()}<br/>Documentation Built with the <a href="https://docusaurus.io/" target="_blank">Docusaurus</a> Framework`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://thomps9012-io.vercel.app">thomps9012-io</a><br/>Documentation Built with the <a href="https://docusaurus.io/" target="_blank">Docusaurus</a> Framework`,
       },
       prism: {
         theme: lightCodeTheme,
