@@ -1,6 +1,8 @@
 # Organize Text
 
-Classifies a given piece of text based upon the language it's scripted in. The only headers necessary for this route are those associated with authorization, **_JWT and email_**
+# POST /api/organize
+
+Organizes a given piece of text based upon the language it's scripted in. The only headers necessary for this route are those associated with authorization, **_JWT and email_**
 
 ### Request Parts
 

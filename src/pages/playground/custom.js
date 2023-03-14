@@ -46,6 +46,16 @@ function EndpointTest({ jwt, email }) {
           .setAttribute("class", "show_text_input");
         setEndpoint(api_url + endpoint);
         break;
+      case "/filter":
+        setTextAction("Filter");
+        document
+          .getElementById("text_input")
+          .setAttribute("class", "show_text_input");
+        document
+          .getElementById("id_input")
+          .setAttribute("class", "show_id_input");
+        setEndpoint(api_url + endpoint);
+        break;
     }
   };
   const formatFilters = (e) => {
@@ -101,17 +111,32 @@ function EndpointTest({ jwt, email }) {
     document.getElementById("curl").setAttribute("class", "show");
   };
   const formatID = (e) => {
-    setFetchOpts({
-      method: "GET",
-      headers: {
-        email: email,
-        token: jwt,
-      },
-    });
-    setEndpoint(`${api_url}/scripts/${e.target.value}`);
-    setRequestContent(
-      `curl --request GET \n--url ${api_url}/scripts/${e.target.value} \n--header 'email:${email}' \n--header 'token: ${jwt}'`
-    );
+    if (text_action != "Filter") {
+      setFetchOpts({
+        method: "GET",
+        headers: {
+          email: email,
+          token: jwt,
+        },
+      });
+      setEndpoint(`${api_url}/scripts/${e.target.value}`);
+      setRequestContent(
+        `curl --request GET \n--url ${api_url}/scripts/${e.target.value} \n--header 'email:${email}' \n--header 'token: ${jwt}'`
+      );
+    } else {
+      setFetchOpts({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          email: email,
+          token: jwt,
+        },
+      });
+      const text_to_filter = document.getElementById("text_string").value
+      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'token: ${jwt}' \n--data '{
+        "text": "${text_to_filter}", "script_id": ${parseInt(e.target.value)}
+    }'`);
+    }
     document.getElementById("curl").setAttribute("class", "show");
   };
   const formatText = (e) => {
@@ -124,8 +149,9 @@ function EndpointTest({ jwt, email }) {
       },
       body: `{"text": "${e.target.value}"}`,
     });
+    const script_id = document.getElementById("script_id").value
     setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'token: ${jwt}' \n--data '{
-      "text": "${e.target.value}"
+      "text": "${e.target.value}", "script_id": ${parseInt(script_id)}
   }'`);
     document.getElementById("curl").setAttribute("class", "show");
   };
@@ -187,6 +213,7 @@ function EndpointTest({ jwt, email }) {
               <option value="/scripts/:id">Retrieve a Script by ID</option>
               <option value="/classify">Classify Text by Character</option>
               <option value="/organize">Organize Text by Word</option>
+              <option value="/filter">Filter Text by a Script</option>
             </select>
             <form id="script_filters" className="hide" onChange={formatFilters}>
               <label>
@@ -301,23 +328,23 @@ export default function CustomRequests() {
     window.location.assign("/script_sweep");
   };
   return (
-      <Layout
-        title="Custom Requests"
-        description="A user interface that allows the application user to create semi-customizable requests to the server using their authentication credentials"
+    <Layout
+      title="Custom Requests"
+      description="A user interface that allows the application user to create semi-customizable requests to the server using their authentication credentials"
+    >
+      <EndpointTest {...endpointProps} />
+      <div
+        id="footer"
+        className={clsx("hero hero--primary", styles.heroBanner)}
       >
-        <EndpointTest {...endpointProps} />
-        <div
-          id="footer"
-          className={clsx("hero hero--primary", styles.heroBanner)}
+        <button
+          onClick={clearCredentials}
+          className="button button--primary button--lg"
+          id="send-request-btn"
         >
-          <button
-            onClick={clearCredentials}
-            className="button button--primary button--lg"
-            id="send-request-btn"
-          >
-            ❌ Clear Any Saved Credentials 🐱‍💻
-          </button>
-        </div>
-      </Layout>
+          ❌ Clear Any Saved Credentials 🐱‍💻
+        </button>
+      </div>
+    </Layout>
   );
 }

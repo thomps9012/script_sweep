@@ -48,24 +48,19 @@ function EndpointTest({ jwt, email }) {
           `curl --request GET \n--url ${api_url}/scripts/39 \n--header 'email:${email}' \n--header 'token: ${jwt}'`
         );
         break;
-      case "/scripts/filter":
+      case "/filter":
         setFetchOpts({
-          method: "GET",
+          method: "POST",
           headers: {
-            limit: 3,
-            living: false,
-            direction: "LEFT_TO_RIGHT",
-            fields: "name, id, direction, year, continents, living",
-            max_year: "-500",
-            min_year: "-1200",
-            order_by: "name",
-            order_direction: "desc",
+            "Content-Type": "application/json",
             email: email,
             token: jwt,
           },
         });
         setRequestContent(
-          `curl --request GET \n--url ${api_url}/scripts/filter \n--header 'continent: AS' \n--header 'direction: LEFT_TO_RIGHT' \n--header 'email: ${email}' \n--header 'fields: name, id, direction, year, continents, living' \n--header 'limit: 3' \n--header 'living: false' \n--header 'max_year: -500' \n--header 'min_year: -1200' \n--header 'order_by: name' \n--header 'order_direction: desc' \n--header 'token: ${jwt}'`
+          `curl --request GET \n--url ${api_url}/filter \n--header 'email: ${email}' \n--header 'token: ${jwt}' \n--data '{
+            "text": "hello goodbye в 英国的 اقثقنح this is a test", "script_id": 61
+          }`
         );
         break;
       case "/classify":
@@ -155,8 +150,8 @@ function EndpointTest({ jwt, email }) {
                 View Select Info for 5 Different Scripts
               </option>
               <option value="/scripts/39">Get a Script with ID of 39</option>
-              <option value="/scripts/filter">
-                View Select Info on Filtered "Dead" Scripts
+              <option value="/filter">
+                Filter Text Input Based on It's Script
               </option>
               <option value="/classify">Classify Text Input</option>
               <option value="/organize">Organize Text Input</option>
