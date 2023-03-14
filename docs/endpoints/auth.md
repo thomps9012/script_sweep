@@ -27,8 +27,10 @@ Returns the API key, successful status code, and a message alerting the user to 
 
 ```javascript
 {
-    "key": "3KdaXhS.f2QWJ4GMtfpv9vqA+8lTMPwuG5L",
-    "message": "Please save this api key somewhere secure as it will not be displayed again."
+    "code": 201,
+    "data": "3KdaXhS.f2QWJ4GMtfpv9vqA+8lTMPwuG5L",
+    "message": "Please save this API key somewhere secure, as it will NOT be shown again",
+    "status": "KEY CREATED"
 }
 ```
 
@@ -55,7 +57,8 @@ const response = await fetch("/api/auth/jwt", {
 ```javascript
 {
 	"status": "OK",
-	"code": 201,
-	"token": "eaLhcDciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhRMqU2In0..aHVUcEE7IewIDEnfFdPw5g.UammvwKUHOBY7IX8b6xduplxL1JbLGOeLfnPDW_s7-5Xp06methCJns4TZZ2OPBq-mlRRqV-C8MBmKZOEXp-8JwamrN3r_0CCahbzeus2zcDTcUwQD3D69niSlyMk7S30b4v1OYpnKED8cXI_TY-C1woqnCUSIc6aC6wDLHHtByYrfbhX3PvN6hj--5Msh51NnNqHV6IYRlbieYt3MWS0kfQiFNNnOWbpNzXVw-PSMShyvjg9iFueS7WZgW85PlqeZEYVVTw0QNOxQVVz7eLVw.oqpBOqt-riAwoYGa3Y7KPq"
+	"code": 200,
+	"data": "eaLhcDciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhRMqU2In0..aHVUcEE7IewIDEnfFdPw5g.UammvwKUHOBY7IX8b6xduplxL1JbLGOeLfnPDW_s7-5Xp06methCJns4TZZ2OPBq-mlRRqV-C8MBmKZOEXp-8JwamrN3r_0CCahbzeus2zcDTcUwQD3D69niSlyMk7S30b4v1OYpnKED8cXI_TY-C1woqnCUSIc6aC6wDLHHtByYrfbhX3PvN6hj--5Msh51NnNqHV6IYRlbieYt3MWS0kfQiFNNnOWbpNzXVw-PSMShyvjg9iFueS7WZgW85PlqeZEYVVTw0QNOxQVVz7eLVw.oqpBOqt-riAwoYGa3Y7KPq",
+  "message": "Here is a secure JSON Web Token to make authorized requests to protected API endpoints"
 }
 ```

@@ -35,7 +35,7 @@ The response body consists of a status, HTTP code, and the input text organized 
 {
 	"status": "OK",
 	"code": 200,
-	"organized_text": [
+	"data": [
 		{
 			"script": "Latin",
 			"words": [
@@ -69,7 +69,8 @@ The response body consists of a status, HTTP code, and the input text organized 
 			"word_percent": 20,
 			"character_percent": 27
 		}
-	]
+	],
+	"message": "Here is your input text organized by script"
 }
 
 ```

@@ -38,7 +38,7 @@ The response body will convey information about the request status, HTTP code, w
     "status": "OK",
     "code": 200,
     "classified_by": "word",
-    "classified_text": [
+    "data": [
 		{
 			"script": "Latin",
 			"int_percent": 40,
@@ -59,7 +59,8 @@ The response body will convey information about the request status, HTTP code, w
 			"int_percent": 20,
 			"string_percent": "20%"
 		}
-	]
+	],
+	"message": "Here is your input text classified by script and word"
 }
 ```
 
@@ -70,7 +71,7 @@ The response body will convey information about the request status, HTTP code, w
     "status": "OK",
     "code": 200,
     "classified_by": "character",
-    "classified_text": [
+    "data": [
 		{
 			"script": "Latin",
 			"int_percent": 55,
@@ -91,6 +92,7 @@ The response body will convey information about the request status, HTTP code, w
 			"int_percent": 27,
 			"string_percent": "27%"
 		}
-	]
+	],
+	"message": "Here is your input text classified by script and character"
 }
 ```

@@ -24,8 +24,10 @@ const data = await fetch("https://tinyurl.com/4zh9cjzb/api/auth/api_key", {
 
 ```javascript
 {
-	"key": "3KdaXhS.f2QWJ4GMtfpv9vqA+8lTMPwuG5L",
-	"message": "Please save this api key somewhere secure as it will not be displayed again."
+    "code": 201,
+    "data": "3KdaXhS.f2QWJ4GMtfpv9vqA+8lTMPwuG5L",
+    "message": "Please save this API key somewhere secure, as it will NOT be shown again",
+    "status": "KEY CREATED"
 }
 ```
 

@@ -20,6 +20,6 @@ Now that you have successfully generated an API Key and JWT to authenticate your
 ### /api/organize
 📑 Organizes and classifies words in a given piece of text based on scripting language
 ### /api/scripts <br /> /api/scripts/:id
-📜 Provide detailed information about scripts, one such as name, unicode characters, year created, and text direction
-### /api/scripts/filter
-🔎 Gives the option to filter scripts based on creation year, text direction, and more
+📜 Provide detailed information about scripts, such as name, unicode characters, year created, and text direction, allows for refining of search values based on these fields
+### /api/filter
+🔎 Gives the option to search through and filter text based on a specified script

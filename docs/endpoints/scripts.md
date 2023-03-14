@@ -1,4 +1,4 @@
-# Scripts & Filter
+# Scripts
 
 The scripts API endpoint consists of three different **_GET_** routes with customized result options specified by the user in the request headers
 

@@ -162,17 +162,17 @@ function EndpointTest({ jwt, email }) {
     document.getElementById("response-res").setAttribute("class", "hide");
 
     try {
-      const data = await fetch(url_endpoint, fetch_options).then((res) =>
+      const res = await fetch(url_endpoint, fetch_options).then((res) =>
         res.json()
       );
-      if (data) {
+      if (res) {
         document.getElementById("loader").setAttribute("class", "hide");
         document.getElementById("response-res").setAttribute("class", "show");
         const brace = {
           brace: 0,
         };
         document.querySelector("#response-res").innerHTML = JSON.stringify(
-          data
+          res
         ).replace(/({|}[,]*|[^{}:]+:[^{}:,]*[,{]*)/g, (m, p1) => {
           const returnFunction = () =>
             `<div style="text-indent: ${brace["brace"] * 20}px;">${p1}</div>`;

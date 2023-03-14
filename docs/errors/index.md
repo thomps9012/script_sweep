@@ -12,7 +12,7 @@
 
 #### Potential Resolution
 
-- Use the **_/api/classify_** endpoint to learn more about your text
+- Use the **_/api/classify_** endpoint to learn more about your text instead
 
 <br />
 
@@ -34,6 +34,7 @@
 
 - Not including a valid email address in the request headers
 - Not including a valid API key when requesting a JWT
+- Not including a valid JWT in the request headers
 
 #### Potential Resolution
 
@@ -68,13 +69,24 @@
 
 - Sign up for a new API key or check that your email is correct
 
+### **422 Unprocessable Content**
+
+- You have not included all the request body parameters
+- You've included extra response body key / value pairs
+
+#### Potential Resolution
+
+- Check that your request body matches the specified fields for the endpoint
+
 ### **429 Too Many Requests**
 
 - You've reached the 100 API call limit
+- You've sent more than five API calls in under one minute
 
 #### Potential Resolution
 
 - Wait until tomorrow
+- Slow your horses
 
 <br />
 

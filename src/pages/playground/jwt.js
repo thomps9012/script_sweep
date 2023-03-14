@@ -76,8 +76,8 @@ export default function JWTExchange() {
       };
       try {
         const response = await fetch(url, options).then((res) => res.json());
-        if (response.token) {
-          sessionStorage.setItem("token", response.token);
+        if (response.code == 200) {
+          sessionStorage.setItem("token", response.data);
           sessionStorage.setItem("email", email);
           document.getElementById("key_exchange").setAttribute("class", "hide");
           document
@@ -86,7 +86,7 @@ export default function JWTExchange() {
         } else {
           const api_key_info_link = document.getElementById("info-redirect");
           setAPIInfo(response.message);
-          setInfoLink(response.documentation_link);
+          setInfoLink(response.data);
           api_key_info_link.setAttribute(
             "class",
             "button button--info button--lg"

@@ -66,13 +66,13 @@ function APIKeyRequest() {
         body: `{"email":"${email}","first_name":"${first_name}","last_name":"${last_name}"}`,
       };
       try {
-        const data = await fetch(url, options).then((response) =>
+        const res = await fetch(url, options).then((response) =>
           response.json()
         );
         const api_key_info_link = document.getElementById("info-redirect");
-        setAPIInfo(data.message);
-        if (!data.key) {
-          setInfoLink(data.documentation_link);
+        setAPIInfo(res.message);
+        if (res.status != 200) {
+          setInfoLink(res.data);
           api_key_info_link.setAttribute(
             "class",
             "button button--primary button--lg"
@@ -80,7 +80,7 @@ function APIKeyRequest() {
           api_key_info_link.innerText = "Learn How to Resolve 	💡";
           setSubmitText("Try Again");
         } else {
-          setAPIKey(data.key);
+          setAPIKey(res.data);
           api_key_info_link.setAttribute("class", "hide");
           sessionStorage.setItem("email", email);
           setInfoLink("/script_sweep/playground/jwt");
