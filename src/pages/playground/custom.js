@@ -213,7 +213,7 @@ function EndpointTest({ jwt, email }) {
               <option value="/scripts/:id">Retrieve a Script by ID</option>
               <option value="/classify">Classify Text by Character</option>
               <option value="/organize">Organize Text by Word</option>
-              <option value="/filter">Filter Text by a Script</option>
+              <option value="/filter">Filter Text by a Specified Script</option>
             </select>
             <form id="script_filters" className="hide" onChange={formatFilters}>
               <label>
