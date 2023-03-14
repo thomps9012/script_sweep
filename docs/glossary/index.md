@@ -93,7 +93,7 @@ const res = await fetch("/api/testing", {
   // below are the headers
   headers: {
     one: "header_one",
-    token: "token_value",
+    Authorization: "Bearer token_value",
   },
 });
 ```
@@ -109,7 +109,7 @@ const res = await fetch("/api/testing", {
   method: "POST",
   headers: {
     one: "header_one",
-    token: "token_value",
+    Authorization: "Bearer token_value",
   },
   // below is the request body
   body: JSON.stringify({

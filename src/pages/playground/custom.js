@@ -80,7 +80,7 @@ function EndpointTest({ jwt, email }) {
         living: living_header,
         max_year: values["max_year"],
         min_year: values["min_year"],
-        token: jwt,
+        Authorization: `Bearer ${jwt}`,
       },
     });
     setRequestContent(
@@ -106,7 +106,7 @@ function EndpointTest({ jwt, email }) {
         values["min_year"] != ""
           ? `--header 'min_year: ${values["min_year"]}' \n`
           : ""
-      }--header 'token: ${jwt}'`
+      }--header 'Authorization: Bearer ${jwt}'`
     );
     document.getElementById("curl").setAttribute("class", "show");
   };
@@ -116,12 +116,12 @@ function EndpointTest({ jwt, email }) {
         method: "GET",
         headers: {
           email: email,
-          token: jwt,
+          Authorization: `Bearer ${jwt}`,
         },
       });
       setEndpoint(`${api_url}/scripts/${e.target.value}`);
       setRequestContent(
-        `curl --request GET \n--url ${api_url}/scripts/${e.target.value} \n--header 'email:${email}' \n--header 'token: ${jwt}'`
+        `curl --request GET \n--url ${api_url}/scripts/${e.target.value} \n--header 'email:${email}' \n--header 'Authorization: Bearer ${jwt}'`
       );
     } else {
       setFetchOpts({
@@ -129,11 +129,11 @@ function EndpointTest({ jwt, email }) {
         headers: {
           "Content-Type": "application/json",
           email: email,
-          token: jwt,
+          Authorization: `Bearer ${jwt}`,
         },
       });
       const text_to_filter = document.getElementById("text_string").value
-      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'token: ${jwt}' \n--data '{
+      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
         "text": "${text_to_filter}", "script_id": ${parseInt(e.target.value)}
     }'`);
     }
@@ -145,12 +145,12 @@ function EndpointTest({ jwt, email }) {
       headers: {
         "Content-Type": "application/json",
         email: email,
-        token: jwt,
+        Authorization: `Bearer ${jwt}`,
       },
       body: `{"text": "${e.target.value}"}`,
     });
     const script_id = document.getElementById("script_id").value
-    setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'token: ${jwt}' \n--data '{
+    setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
       "text": "${e.target.value}", "script_id": ${parseInt(script_id)}
   }'`);
     document.getElementById("curl").setAttribute("class", "show");
