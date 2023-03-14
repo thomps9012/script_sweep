@@ -127,12 +127,12 @@ const data = await fetch("/api/scripts", {
 ];
 ```
 
-#### **Request GET /api/scripts/filter**
+#### **Request GET /api/scripts With Filters**
 
 ---
 
 ```javascript
-const data = await fetch("/api/scripts/filter", {
+const data = await fetch("/api/scripts", {
   method: "GET",
   headers: {
     email: "test211@test.com",
@@ -319,6 +319,49 @@ const data = await fetch("/api/classify", {
 			"string_percent": "27%"
 		}
 	]
+}
+```
+
+#### **Request POST /api/filter**
+
+---
+
+```javascript
+const data = await fetch("/api/filter", {
+  method: "POST",
+  headers: {
+    email: "test211@test.com",
+    token:
+      "eaLhcDciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhRMqU2In0..aHVUcEE7IewIDEnfFdPw5g.UammvwKUHOBY7IX8b6xduplxL1JbLGOeLfnPDW_s7-5Xp06methCJns4TZZ2OPBq-mlRRqV-C8MBmKZOEXp-8JwamrN3r_0CCahbzeus2zcDTcUwQD3D69niSlyMk7S30b4v1OYpnKED8cXI_TY-C1woqnCUSIc6aC6wDLHHtByYrfbhX3PvN6hj--5Msh51NnNqHV6IYRlbieYt3MWS0kfQiFNNnOWbpNzXVw-PSMShyvjg9iFueS7WZgW85PlqeZEYVVTw0QNOxQVVz7eLVw.oqpBOqt-riAwoYGa3Y7KPq",
+  },
+  body: {
+    text: "hello goodbye в 英国的 اقثقنح this is a test",
+    script_id: 61
+  },
+}).then((res) => res.json());
+```
+
+#### **Response Body**
+---
+
+```javascript
+{
+	"code": 200,
+	"data": {
+		"script": "Latin",
+		"filtered_text": [
+			"hello",
+			"goodbye",
+			"this",
+			"is",
+			"a",
+			"test"
+		],
+		"word_percent": 67,
+		"character_percent": 70
+	},
+	"message": "Here is your input text filtered by your specified script",
+	"status": "OK"
 }
 ```
 
