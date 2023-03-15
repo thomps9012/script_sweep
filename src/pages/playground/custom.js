@@ -72,15 +72,15 @@ function EndpointTest({ jwt, email }) {
     setFetchOpts({
       method: "GET",
       headers: {
-        email: email,
-        fields: values["fields"],
-        limit: values["limit"],
-        continent: values["continent"],
-        direction: values["direction"],
-        living: living_header,
-        max_year: values["max_year"],
-        min_year: values["min_year"],
-        Authorization: `Bearer ${jwt}`,
+        "email": email,
+        "fields": values["fields"],
+        "limit": values["limit"],
+        "continent": values["continent"],
+        "direction": values["direction"],
+        "living": living_header,
+        "max_year": values["max_year"],
+        "min_year": values["min_year"],
+        "Authorization": `Bearer ${jwt}`,
       },
     });
     setRequestContent(
@@ -92,11 +92,7 @@ function EndpointTest({ jwt, email }) {
         values["direction"] != ""
           ? `--header 'direction: ${values["direction"]}' \n`
           : ""
-      }--header 'email: ${email}' \n${
-        values["fields"] != ""
-          ? `--header 'fields: ${values["fields"]}' \n`
-          : ""
-      }${
+      }${`--header 'fields: ${values["fields"]}' \n`}${
         values["limit"] != "" ? `--header 'limit: ${values["limit"]}' \n` : ""
       }--header 'living: ${living_header}' \n${
         values["max_year"] != ""
@@ -106,7 +102,8 @@ function EndpointTest({ jwt, email }) {
         values["min_year"] != ""
           ? `--header 'min_year: ${values["min_year"]}' \n`
           : ""
-      }--header 'Authorization: Bearer ${jwt}'`
+      }--header 'Authorization: Bearer ${jwt}'\n
+      --header 'email: ${email}'`
     );
     document.getElementById("curl").setAttribute("class", "show");
   };
@@ -124,6 +121,7 @@ function EndpointTest({ jwt, email }) {
         `curl --request GET \n--url ${api_url}/scripts/${e.target.value} \n--header 'email:${email}' \n--header 'Authorization: Bearer ${jwt}'`
       );
     } else {
+      const text_to_filter = document.getElementById("text_string").value;
       setFetchOpts({
         method: "POST",
         headers: {
@@ -131,8 +129,10 @@ function EndpointTest({ jwt, email }) {
           email: email,
           Authorization: `Bearer ${jwt}`,
         },
+        body: `{"text": "${text_to_filter}", "script_id": ${parseInt(
+          e.target.value
+        )}}`,
       });
-      const text_to_filter = document.getElementById("text_string").value;
       setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
         "text": "${text_to_filter}", \n"script_id": ${parseInt(e.target.value)}
     }'`);
@@ -140,7 +140,6 @@ function EndpointTest({ jwt, email }) {
     document.getElementById("curl").setAttribute("class", "show");
   };
   const formatText = (e) => {
-    const script_id = document.getElementById("script_id").value;
     if (text_action != "Filter") {
       setFetchOpts({
         method: "POST",
@@ -148,7 +147,7 @@ function EndpointTest({ jwt, email }) {
           "Content-Type": "application/json",
           email: email,
           Authorization: `Bearer ${jwt}`,
-          by: "word"
+          by: "word",
         },
         body: `{"text": "${e.target.value}"}`,
       });
@@ -156,6 +155,7 @@ function EndpointTest({ jwt, email }) {
           "text": "${e.target.value}"}
         }'`);
     } else {
+      const script_id = document.getElementById("script_id").value;
       setFetchOpts({
         method: "POST",
         headers: {
@@ -271,7 +271,7 @@ function EndpointTest({ jwt, email }) {
                 <option value="SA">South America</option>
               </select>
               <label>Fields to Return</label>
-              <input type="text" name="fields" placeholder="id, name, year" />
+              <input type="text" name="fields" placeholder="id, name, year" defaultValue={"id, name, year, ranges, link, direction, continents"} />
               <label>Response Limit</label>
               <input
                 type="number"
