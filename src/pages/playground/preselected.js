@@ -32,8 +32,7 @@ function EndpointTest({ jwt, email }) {
             Authorization: `Bearer ${jwt}`,
           },
         });
-        setRequestContent(
-          `curl --request GET \n--url ${api_url}/scripts \n--header 'email:${email}' \n--header 'fields: id, name, year' \n--header 'limit: 5' \n--header 'order_by: year' \n--header 'order_direction: desc' \n--header 'Authorization: Bearer ${jwt}'`
+        setRequestContent(`curl --request GET\n--url ${api_url}/scripts\n--header 'email:${email}'\n--header 'fields: id, name, year'\n--header 'limit: 5'\n--header 'order_by: year'\n--header 'order_direction: desc'\n--header 'Authorization: Bearer ${jwt}'`
         );
         break;
       case "/scripts/39":
@@ -44,8 +43,7 @@ function EndpointTest({ jwt, email }) {
             Authorization: `Bearer ${jwt}`,
           },
         });
-        setRequestContent(
-          `curl --request GET \n--url ${api_url}/scripts/39 \n--header 'email:${email}' \n--header 'Authorization: Bearer ${jwt}'`
+        setRequestContent(`curl --request GET\n--url ${api_url}/scripts/39\n--header 'email:${email}'\n--header 'Authorization: Bearer ${jwt}'`
         );
         break;
       case "/filter":
@@ -56,12 +54,9 @@ function EndpointTest({ jwt, email }) {
             email: email,
             Authorization: `Bearer ${jwt}`,
           },
+          body: `{"text": "hello goodbye в 英国的 اقثقنح this is a test", "script_id": 61}`
         });
-        setRequestContent(
-          `curl --request GET \n--url ${api_url}/filter \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
-            "text": "hello goodbye в 英国的 اقثقنح this is a test", "script_id": 61
-          }`
-        );
+        setRequestContent(`curl --request POST\n--url ${api_url}/filter\n--header 'Authorization: Bearer ${jwt}'\n--header 'Content-Type: application/json'\n--header 'email: ${email}'\n--data '{\n"text": "hello goodbye в 英国的 اقثقنح this is a test",\n"script_id": 6\n}'`);
         break;
       case "/classify":
         setFetchOpts({
@@ -73,9 +68,7 @@ function EndpointTest({ jwt, email }) {
           },
           body: `{"text": "hello goodbye в 英国的 اقثقنح"}`,
         });
-        setRequestContent(`curl --request POST \n--url ${api_url}/classify \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
-              "text": "hello goodbye в 英国的 اقثقنح"
-          }'`);
+        setRequestContent(`curl --request POST\n--url ${api_url}/classify\n--header 'Authorization: Bearer ${jwt}'\n--header 'Content-Type: application/json'\n--header 'classify_by: word'\n--header 'email: ${email}'\n--data '{\n"text": "hello goodbye в 英国的 اقثقنح\n}'`);
         break;
       case "/organize":
         setFetchOpts({
@@ -87,9 +80,7 @@ function EndpointTest({ jwt, email }) {
           },
           body: `{"text": "hello goodbye в 英国的 اقثقنح"}`,
         });
-        setRequestContent(`curl --request POST \n--url ${api_url}/organize \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
-              "text": "hello goodbye в 英国的 اقثقنح"
-          }'`);
+        setRequestContent(`curl --request POST\n--url ${api_url}/organize\n--header 'Authorization: Bearer ${jwt}'\n--header 'Content-Type: application/json'\n--header 'email: ${email}'\n--data '{\n"text": "hello goodbye в 英国的 اقثقنح\n}'`);
         break;
     }
   };

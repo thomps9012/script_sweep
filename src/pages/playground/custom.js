@@ -132,27 +132,45 @@ function EndpointTest({ jwt, email }) {
           Authorization: `Bearer ${jwt}`,
         },
       });
-      const text_to_filter = document.getElementById("text_string").value
-      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
-        "text": "${text_to_filter}", "script_id": ${parseInt(e.target.value)}
+      const text_to_filter = document.getElementById("text_string").value;
+      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
+        "text": "${text_to_filter}", \n"script_id": ${parseInt(e.target.value)}
     }'`);
     }
     document.getElementById("curl").setAttribute("class", "show");
   };
   const formatText = (e) => {
-    setFetchOpts({
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        email: email,
-        Authorization: `Bearer ${jwt}`,
-      },
-      body: `{"text": "${e.target.value}"}`,
-    });
-    const script_id = document.getElementById("script_id").value
-    setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
-      "text": "${e.target.value}", "script_id": ${parseInt(script_id)}
-  }'`);
+    const script_id = document.getElementById("script_id").value;
+    if (text_action != "Filter") {
+      setFetchOpts({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          email: email,
+          Authorization: `Bearer ${jwt}`,
+          by: "word"
+        },
+        body: `{"text": "${e.target.value}"}`,
+      });
+      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'by: word' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
+          "text": "${e.target.value}"}
+        }'`);
+    } else {
+      setFetchOpts({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          email: email,
+          Authorization: `Bearer ${jwt}`,
+        },
+        body: `{"text": "${e.target.value}", "script_id": ${parseInt(
+          script_id
+        )}}`,
+      });
+      setRequestContent(`curl --request POST \n--url ${url_endpoint} \n--header 'Content-Type: application/json' \n--header 'email: ${email}' \n--header 'Authorization: Bearer ${jwt}' \n--data '{
+          "text": "${e.target.value}", "script_id": ${parseInt(script_id)}
+        }'`);
+    }
     document.getElementById("curl").setAttribute("class", "show");
   };
   const handleRequest = async (e) => {
