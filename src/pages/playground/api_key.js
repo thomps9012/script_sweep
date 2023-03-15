@@ -71,7 +71,8 @@ function APIKeyRequest() {
         );
         const api_key_info_link = document.getElementById("info-redirect");
         setAPIInfo(res.message);
-        if (res.status != 200) {
+        console.dir(res)
+        if (res.code != 201) {
           setInfoLink(res.data);
           api_key_info_link.setAttribute(
             "class",
